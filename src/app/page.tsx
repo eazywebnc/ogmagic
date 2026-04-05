@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Powerful{' '}
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
               REST API
             </span>
           </h2>
@@ -32,19 +32,19 @@ export default function HomePage() {
             <div className="text-muted-foreground mb-2"># Generate an OG image via the API</div>
             <div>
               <span className="text-cyan-400">curl</span>{' '}
-              <span className="text-violet-400">-X POST</span>{' '}
+              <span className="text-blue-400">-X POST</span>{' '}
               https://ogmagic.eazyweb.nc/api/generate \
             </div>
             <div className="pl-4">
-              <span className="text-violet-400">-H</span>{' '}
+              <span className="text-blue-400">-H</span>{' '}
               <span className="text-emerald-400">&quot;Authorization: Bearer YOUR_API_KEY&quot;</span> \
             </div>
             <div className="pl-4">
-              <span className="text-violet-400">-H</span>{' '}
+              <span className="text-blue-400">-H</span>{' '}
               <span className="text-emerald-400">&quot;Content-Type: application/json&quot;</span> \
             </div>
             <div className="pl-4">
-              <span className="text-violet-400">-d</span>{' '}
+              <span className="text-blue-400">-d</span>{' '}
               <span className="text-emerald-400">&apos;{'{"template":"minimal","title":"My Blog Post","subtitle":"A great article"}'}&apos;</span>
             </div>
           </div>

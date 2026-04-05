@@ -116,8 +116,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.72 0.19 195 / 20%); }
-  50% { box-shadow: 0 0 40px oklch(0.72 0.19 195 / 40%); }
+  0%, 100% { box-shadow: 0 0 20px oklch(0.72 0.19 210 / 20%); }
+  50% { box-shadow: 0 0 40px oklch(0.72 0.19 210 / 50%); }
 }
 
 .animate-float {

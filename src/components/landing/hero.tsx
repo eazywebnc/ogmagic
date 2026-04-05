@@ -23,8 +23,8 @@ const floatingCards = [
   {
     title: 'Launching v2.0',
     subtitle: 'producthunt.com',
-    gradient: 'from-violet-500/20 to-purple-600/20',
-    border: 'border-violet-500/20',
+    gradient: 'from-sky-500/20 to-blue-600/20',
+    border: 'border-sky-500/20',
     rotation: 'rotate-3',
     position: 'top-48 -right-4 lg:right-16',
     delay: 0.3,
@@ -150,7 +150,7 @@ export function Hero() {
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.25_0.12_195),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.2_0.15_290),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.3_0.18_230),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.15_0.1_195),transparent_40%)]" />
 
       {/* Grid pattern */}
@@ -188,7 +188,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-cyan-400 mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-sky-400 mb-8">
             <Zap className="w-3.5 h-3.5" />
             <span>AI-powered OG image generation</span>
           </div>
@@ -202,7 +202,7 @@ export function Hero() {
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6"
         >
           Generate{' '}
-          <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
             stunning OG images
           </span>
           {' '}<br />
@@ -227,7 +227,7 @@ export function Hero() {
         >
           <Link
             href="/auth/login"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 text-white font-semibold text-lg transition-all animate-pulse-glow"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white font-semibold text-lg transition-all animate-pulse-glow"
           >
             Start generating free
             <ArrowRight className="w-5 h-5" />
@@ -253,7 +253,7 @@ export function Hero() {
         <div className="mt-16 max-w-4xl mx-auto">
           <div
             ref={dashboardRef}
-            className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10"
+            className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-sky-400/10"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
             <Image

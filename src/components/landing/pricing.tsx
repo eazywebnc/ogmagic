@@ -16,12 +16,12 @@ export function Pricing() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-semibold text-violet-400 tracking-wider uppercase mb-4">
+          <p className="text-sm font-semibold text-sky-400 tracking-wider uppercase mb-4">
             Pricing
           </p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
             Simple, transparent{' '}
-            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
               pricing
             </span>
           </h2>
@@ -41,12 +41,12 @@ export function Pricing() {
               className={cn(
                 'relative rounded-2xl p-8 flex flex-col',
                 plan.is_popular
-                  ? 'glass border-2 border-cyan-500/40 shadow-[0_0_40px_oklch(0.72_0.19_195/15%)]'
+                  ? 'glass border-2 border-sky-400/40 shadow-[0_0_40px_rgba(56,189,248,0.15)]'
                   : 'glass-card'
               )}
             >
               {plan.is_popular && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 text-white">
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-semibold px-4 py-1 rounded-full bg-gradient-to-r from-sky-400 to-cyan-500 text-white">
                   Most Popular
                 </span>
               )}
@@ -68,7 +68,7 @@ export function Pricing() {
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
-                    <Check className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
+                    <Check className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
@@ -79,7 +79,7 @@ export function Pricing() {
                 className={cn(
                   'block text-center py-3 rounded-xl font-medium text-sm transition-all',
                   plan.is_popular
-                    ? 'bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 text-white'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-500 hover:from-sky-500 hover:to-cyan-600 text-white'
                     : 'glass hover:bg-white/10 text-foreground'
                 )}
               >

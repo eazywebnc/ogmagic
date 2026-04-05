@@ -15,13 +15,13 @@ export function CTA() {
           className="relative glass rounded-3xl p-12 sm:p-16 text-center overflow-hidden"
         >
           {/* Background glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.3_0.12_195),transparent_70%)] opacity-50" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.2_0.15_290),transparent_60%)] opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.45_0.18_210),transparent_70%)] opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,oklch(0.35_0.18_240),transparent_60%)] opacity-50" />
 
           <div className="relative">
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6">
               Ready to make your{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 content stand out
               </span>
               ?
@@ -31,7 +31,7 @@ export function CTA() {
             </p>
             <Link
               href="/auth/login"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 text-white font-semibold text-lg transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white font-semibold text-lg transition-all"
             >
               Start generating for free
               <ArrowRight className="w-5 h-5" />
