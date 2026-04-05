@@ -1,0 +1,9 @@
+# OGMagic - Robots.txt
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /auth
+Disallow: /api
+Allow: /api/og
+
+Sitemap: https://ogmagic.eazyweb.nc/sitemap.xml
