@@ -1,9 +1,13 @@
 'use client'
 import Image from "next/image";
-
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Zap } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const floatingCards = [
   {
@@ -14,6 +18,7 @@ const floatingCards = [
     rotation: '-rotate-6',
     position: 'top-32 -left-8 lg:left-12',
     delay: 0,
+    parallaxSpeed: -80,
   },
   {
     title: 'Launching v2.0',
@@ -23,6 +28,7 @@ const floatingCards = [
     rotation: 'rotate-3',
     position: 'top-48 -right-4 lg:right-16',
     delay: 0.3,
+    parallaxSpeed: -120,
   },
   {
     title: 'React Conf 2026',
@@ -32,12 +38,116 @@ const floatingCards = [
     rotation: '-rotate-3',
     position: 'bottom-24 left-4 lg:left-24',
     delay: 0.6,
+    parallaxSpeed: -50,
   },
 ]
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headlineRef = useRef<HTMLHeadingElement>(null)
+  const dashboardRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // --- Floating cards parallax (different speeds per card) ---
+      cardRefs.current.forEach((el, i) => {
+        if (!el) return
+        const speed = floatingCards[i].parallaxSpeed
+        gsap.to(el, {
+          y: speed,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+      })
+
+      // --- Dashboard zoom-in on scroll ---
+      if (dashboardRef.current) {
+        gsap.fromTo(
+          dashboardRef.current,
+          { scale: 0.92, opacity: 0.7 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: dashboardRef.current,
+              start: 'top 90%',
+              end: 'top 40%',
+              scrub: true,
+            },
+          }
+        )
+      }
+
+      // --- Headline split-text reveal (word by word) ---
+      if (headlineRef.current) {
+        // Wrap each word in a span for animation
+        const h1 = headlineRef.current
+        const originalHTML = h1.innerHTML
+
+        // Split text nodes into word spans while preserving existing HTML elements
+        const wrapWords = (node: ChildNode): string => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent || ''
+            return text
+              .split(/(\s+)/)
+              .map((part) =>
+                part.trim()
+                  ? `<span class="gsap-word" style="display:inline-block;opacity:0;transform:translateY(18px)">${part}</span>`
+                  : part
+              )
+              .join('')
+          }
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as HTMLElement
+            const tag = el.tagName.toLowerCase()
+            // Preserve the element but wrap text children inside it
+            const attrs = Array.from(el.attributes)
+              .map((a) => `${a.name}="${a.value}"`)
+              .join(' ')
+            const inner = Array.from(el.childNodes).map(wrapWords).join('')
+            return `<${tag}${attrs ? ' ' + attrs : ''}>${inner}</${tag}>`
+          }
+          return ''
+        }
+
+        const wrapped = Array.from(h1.childNodes).map(wrapWords).join('')
+        h1.innerHTML = wrapped
+
+        const words = h1.querySelectorAll<HTMLElement>('.gsap-word')
+
+        gsap.to(words, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: h1,
+            start: 'top 85%',
+            end: 'top 50%',
+            toggleActions: 'play none none reverse',
+          },
+        })
+
+        // Cleanup function restores original HTML
+        return () => {
+          h1.innerHTML = originalHTML
+        }
+      }
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.25_0.12_195),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.2_0.15_290),transparent_50%)]" />
@@ -56,6 +166,7 @@ export function Hero() {
       {floatingCards.map((card, i) => (
         <motion.div
           key={i}
+          ref={(el) => { cardRefs.current[i] = el }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 + card.delay, duration: 0.8 }}
@@ -84,6 +195,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
+          ref={headlineRef}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.6 }}
@@ -139,7 +251,10 @@ export function Hero() {
 
         {/* Dashboard Preview */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <div className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10">
+          <div
+            ref={dashboardRef}
+            className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10"
+          >
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
             <Image
               src="/images/dashboard.webp"
