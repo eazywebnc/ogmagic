@@ -19,7 +19,14 @@ export const metadata: Metadata = {
     'social banner generator',
     'og image API',
     'meta image generator',
+    'dynamic OG images API',
+    'social media banner tool',
+    'open graph image maker',
+    'automated social preview',
+    'og image generator free',
   ],
+  authors: [{ name: 'EazyWebNC', url: 'https://eazyweb.nc' }],
+  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   metadataBase: new URL('https://ogmagic.eazyweb.nc'),
   alternates: {
     canonical: '/',
@@ -44,13 +51,32 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'WebSite',
+      name: 'OGMagic',
+      url: 'https://ogmagic.eazyweb.nc',
+      publisher: {
+        '@type': 'Organization',
+        name: 'EazyWebNC',
+        url: 'https://eazyweb.nc',
+        logo: { '@type': 'ImageObject', url: 'https://eazyweb.nc/logo.png' },
+        sameAs: [
+          'https://www.facebook.com/eazywebnc',
+          'https://www.linkedin.com/company/eazywebnc',
+          'https://x.com/eazywebnc',
+        ],
+      },
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'OGMagic',
       applicationCategory: 'DesignApplication',
+      applicationSubCategory: 'Image Generation',
       operatingSystem: 'Web',
       url: 'https://ogmagic.eazyweb.nc',
       description:
         'Generate stunning OG images and social banners in seconds. 30+ templates, AI-powered customization, and a powerful API.',
+      featureList:
+        'AI image generation, 30+ templates, Dynamic OG images API, Social media banners, Custom branding, Batch generation',
       offers: {
         '@type': 'AggregateOffer',
         lowPrice: '0',
