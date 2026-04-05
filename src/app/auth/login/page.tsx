@@ -38,6 +38,7 @@ export default function LoginPage() {
       if (error) {
         setError(error.message)
       } else {
+        await fetch('/api/auth/ensure-profile', { method: 'POST' }).catch(() => {})
         window.location.href = '/dashboard'
       }
     }
