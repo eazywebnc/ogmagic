@@ -1,6 +1,7 @@
 import { APP_NAME } from '@/lib/constants'
 import { Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import { EcosystemFooter } from './ecosystem-footer'
 
 export function Footer() {
   return (
@@ -26,6 +27,9 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} {APP_NAME} by EazyWebNC. All rights reserved.
         </p>
+      </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <EcosystemFooter />
       </div>
     </footer>
   )
