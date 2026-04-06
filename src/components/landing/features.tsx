@@ -261,7 +261,7 @@ export function Features() {
   const gridOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.4, 1, 1, 0.4])
 
   return (
-    <section id="features" ref={sectionRef} className="relative py-32 px-6">
+    <section id="features" ref={sectionRef} className="relative py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div

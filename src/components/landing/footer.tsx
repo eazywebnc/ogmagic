@@ -13,7 +13,7 @@ export function Footer() {
           <span className="font-bold">{APP_NAME}</span>
         </div>
 
-        <div className="flex items-center gap-6 text-sm text-muted-foreground">
+        <div className="flex items-center gap-6 text-sm text-muted-foreground flex-wrap justify-center">
           <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
           <Link href="#pricing" className="hover:text-foreground transition-colors">Pricing</Link>
           <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
