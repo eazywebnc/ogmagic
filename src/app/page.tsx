@@ -5,6 +5,7 @@ import { Features } from '@/components/landing/features'
 import { HowItWorks } from '@/components/landing/how-it-works'
 import { TemplatesShowcase } from '@/components/landing/templates-showcase'
 import { Pricing } from '@/components/landing/pricing'
+import { Testimonials } from '@/components/landing/testimonials'
 import { CTA } from '@/components/landing/cta'
 import { Footer } from '@/components/landing/footer'
 
@@ -65,6 +66,7 @@ export default function HomePage() {
         </div>
       </section>
       <Pricing />
+      <Testimonials />
       <CTA />
       <Footer />
     </main>
